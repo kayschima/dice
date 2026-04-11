@@ -76,7 +76,10 @@ class _DicePageState extends State<DicePage> {
                           children: [
                             Text(
                               'Anzahl der Würfe: ${provider.rollCount}',
-                              style: Theme.of(context).textTheme.headlineSmall,
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .headlineSmall,
                             ),
                             const SizedBox(height: 40),
                             Wrap(
@@ -85,12 +88,13 @@ class _DicePageState extends State<DicePage> {
                               alignment: WrapAlignment.center,
                               children: List.generate(
                                 provider.dice.length,
-                                (index) => DieWidget(
-                                  die: provider.dice[index],
-                                  onTap: () =>
-                                      provider.toggleDieSelection(index),
-                                  showSymbol: provider.rollCount > 0,
-                                ),
+                                    (index) =>
+                                    DieWidget(
+                                      die: provider.dice[index],
+                                      onTap: () =>
+                                          provider.toggleDieSelection(index),
+                                      showSymbol: provider.rollCount > 0,
+                                    ),
                               ),
                             ),
                           ],
@@ -107,14 +111,14 @@ class _DicePageState extends State<DicePage> {
                                     size: 32,
                                   ),
                                   onPressed:
-                                      !provider.isDiceCountChangeable ||
-                                          provider.diceCount <= 1
+                                  !provider.isDiceCountChangeable ||
+                                      provider.diceCount <= 1
                                       ? null
                                       : () {
-                                          provider.setDiceCount(
-                                            provider.diceCount - 1,
-                                          );
-                                        },
+                                    provider.setDiceCount(
+                                      provider.diceCount - 1,
+                                    );
+                                  },
                                 ),
                                 Container(
                                   width: 60,
@@ -140,14 +144,14 @@ class _DicePageState extends State<DicePage> {
                                     size: 32,
                                   ),
                                   onPressed:
-                                      !provider.isDiceCountChangeable ||
-                                          provider.diceCount >= 10
+                                  !provider.isDiceCountChangeable ||
+                                      provider.diceCount >= 10
                                       ? null
                                       : () {
-                                          provider.setDiceCount(
-                                            provider.diceCount + 1,
-                                          );
-                                        },
+                                    provider.setDiceCount(
+                                      provider.diceCount + 1,
+                                    );
+                                  },
                                 ),
                               ],
                             ),
@@ -184,7 +188,7 @@ class _DicePageState extends State<DicePage> {
                   flex: 1,
                   child: OutlinedButton(
                     onPressed:
-                        provider.isRolling ? null : () => provider.reset(),
+                    provider.isRolling ? null : () => provider.reset(),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                         vertical: 16,
@@ -202,7 +206,8 @@ class _DicePageState extends State<DicePage> {
                 Expanded(
                   flex: 2,
                   child: ElevatedButton(
-                    onPressed: provider.isRolling ? null : () => provider.rollDice(),
+                    onPressed: provider.isRolling ? null : () =>
+                        provider.rollDice(),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white,
@@ -210,7 +215,7 @@ class _DicePageState extends State<DicePage> {
                     child: const Text(
                       'Würfeln',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                   ),
                 ),
@@ -218,44 +223,48 @@ class _DicePageState extends State<DicePage> {
                 Expanded(
                   flex: 1,
                   child: OutlinedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: const Row(
-                            children: [
-                              AppLogo(size: 32),
-                              SizedBox(width: 16),
-                              Text('Kayschima Dice'),
-                            ],
-                          ),
-                          content: const Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Eine moderne Würfel-App.\n\n'
-                                'Tippe auf die Würfel nach dem ersten Wurf, um sie zu sperren.\n'
-                                'Ändere die Anzahl der Würfel mit den Pfeiltasten.',
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) =>
+                              AlertDialog(
+                                title: const Row(
+                                  children: [
+                                    AppLogo(size: 32),
+                                    SizedBox(width: 16),
+                                    Text('Kayschima Dice'),
+                                  ],
+                                ),
+                                content: const Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        'Eine moderne Würfel-App.\n\n'
+                                            'Tippe auf die Würfel nach dem ersten Wurf, um sie zu sperren.\n'
+                                            'Ändere die Anzahl der Würfel mit den Pfeiltasten.\n\n'
+                                            'Viel Spaß beim Spielen!\n\n'
+                                            'https://github.com/kayschima/dice'
+                                    ),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(),
+                                    child: const Text('Schließen'),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: const Text('Schließen'),
-                            ),
-                          ],
-                        ),
-                      );
-                    }, child: Text(
-                      'Info',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-                  ),
+                        );
+                      }, child: Text(
+                    'Info',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+                ),
               ],
             ),
           );
