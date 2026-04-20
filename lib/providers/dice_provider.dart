@@ -13,6 +13,7 @@ class DiceProvider with ChangeNotifier {
   List<Die> get dice => _dice;
   bool get isDiceCountChangeable => _rollCount == 0 && !_isRolling;
   bool get isRolling => _isRolling;
+  int get totalEyes => _dice.fold(0, (sum, die) => sum + die.value);
 
   void setDiceCount(int count) {
     if (!isDiceCountChangeable) return;

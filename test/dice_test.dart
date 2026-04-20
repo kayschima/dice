@@ -10,6 +10,8 @@ void main() {
       expect(provider.dice.length, 1);
       expect(provider.isRolling, false);
       expect(provider.isDiceCountChangeable, true);
+      expect(provider.dice[0].value, 0);
+      expect(provider.totalEyes, 0);
     });
 
     test('Setting dice count updates state', () {
@@ -17,12 +19,18 @@ void main() {
       provider.setDiceCount(3);
       expect(provider.diceCount, 3);
       expect(provider.dice.length, 3);
-      
+      expect(provider.dice.every((die) => die.value == 0), true);
+      expect(provider.totalEyes, 0);
+
       provider.setDiceCount(15); // Should be capped at 10
       expect(provider.diceCount, 10);
-      
+      expect(provider.dice.every((die) => die.value == 0), true);
+      expect(provider.totalEyes, 0);
+
       provider.setDiceCount(0); // Should be floor at 1
       expect(provider.diceCount, 1);
+      expect(provider.dice[0].value, 0);
+      expect(provider.totalEyes, 0);
     });
 
     test('Rolling dice increments rollCount and eventually updates dice values', () async {
@@ -38,6 +46,7 @@ void main() {
       
       expect(provider.isRolling, false);
       expect(provider.dice[0].value, inInclusiveRange(1, 6));
+      expect(provider.totalEyes, inInclusiveRange(1, 6));
     });
 
     test('Toggle selection should work after first roll', () async {
@@ -74,9 +83,11 @@ void main() {
       provider.reset();
       expect(provider.rollCount, 0);
       expect(provider.isDiceCountChangeable, true);
-      
+      expect(provider.totalEyes, 0);
+
       provider.setDiceCount(10);
       expect(provider.diceCount, 10);
+      expect(provider.totalEyes, 0);
     });
 
     test('Reset should clear everything', () async {
@@ -90,7 +101,9 @@ void main() {
       expect(provider.rollCount, 0);
       expect(provider.dice.length, 3);
       expect(provider.dice[0].isSelected, false);
+      expect(provider.dice.every((die) => die.value == 0), true);
       expect(provider.isRolling, false);
+      expect(provider.totalEyes, 0);
     });
   });
 }

@@ -4,7 +4,7 @@ class Die {
   final bool isRolling;
 
   const Die({
-    this.value = 1,
+    this.value = 0,
     this.isSelected = false,
     this.isRolling = false,
   });

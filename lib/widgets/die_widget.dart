@@ -61,15 +61,15 @@ class _DieWidgetState extends State<DieWidget> with SingleTickerProviderStateMix
               width: 90,
               height: 90,
               decoration: BoxDecoration(
-                color: widget.die.isSelected ? Colors.brown.shade800 : Colors.black,
+                color: widget.die.isSelected ? const Color(0xFFBA9413) : Colors.black,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: widget.die.isSelected ? Colors.brown : Colors.grey.shade800,
+                  color: widget.die.isSelected ? const Color(0xFFBA9413) : Colors.grey.shade800,
                   width: 2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.black.withValues(alpha: 0.3),
                     blurRadius: 4,
                     offset: const Offset(2, 2),
                   ),

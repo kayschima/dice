@@ -100,6 +100,12 @@ class _DicePageState extends State<DicePage> {
                           ],
                         ),
                         const SizedBox(height: 40),
+                        const Divider(
+                          height: 1,
+                          thickness: 1,
+                          color: Colors.black26,
+                        ),
+                        const SizedBox(height: 24),
                         Column(
                           children: [
                             Row(
@@ -158,6 +164,10 @@ class _DicePageState extends State<DicePage> {
                             const Text(
                               'Anzahl Würfel (1-10)',
                               style: TextStyle(color: Colors.grey),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Gesamtzahl der Wurfaugen: ${provider.totalEyes}',
                             ),
                           ],
                         ),
