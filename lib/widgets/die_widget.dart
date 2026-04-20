@@ -58,8 +58,8 @@ class _DieWidgetState extends State<DieWidget> with SingleTickerProviderStateMix
           return Transform.rotate(
             angle: rotation,
             child: Container(
-              width: 90,
-              height: 90,
+              width: 70,
+              height: 70,
               decoration: BoxDecoration(
                 color: widget.die.isSelected ? const Color(0xFFBA9413) : Colors.black,
                 borderRadius: BorderRadius.circular(12),
