@@ -1,4 +1,4 @@
-package de.kayschima.kayschima_dice
+package de.kayschima.dice
 
 import io.flutter.embedding.android.FlutterActivity
 
